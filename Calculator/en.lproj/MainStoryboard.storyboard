@@ -359,36 +359,6 @@
             </objects>
         </scene>
     </scenes>
-    <classes>
-        <class className="CalculatorViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalculatorViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="push0:"/>
-                <relationship kind="action" name="push1:"/>
-                <relationship kind="action" name="push2:"/>
-                <relationship kind="action" name="push3:"/>
-                <relationship kind="action" name="push4:"/>
-                <relationship kind="action" name="push5:"/>
-                <relationship kind="action" name="push6:"/>
-                <relationship kind="action" name="push7:"/>
-                <relationship kind="action" name="push8:"/>
-                <relationship kind="action" name="push9:"/>
-                <relationship kind="action" name="pushac:"/>
-                <relationship kind="action" name="pushasta:"/>
-                <relationship kind="action" name="pushequal:"/>
-                <relationship kind="action" name="pushminus:"/>
-                <relationship kind="action" name="pushperiod:"/>
-                <relationship kind="action" name="pushplumai:"/>
-                <relationship kind="action" name="pushplus:"/>
-                <relationship kind="action" name="pushslash:"/>
-                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="labelc" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

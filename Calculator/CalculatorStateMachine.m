@@ -40,10 +40,9 @@ int d=0;
                 break;
         }
     }
-    else{
-        return [NSString stringWithFormat:@"%c%g",moji,n];
-    }
+    return [NSString stringWithFormat:@"%c%g",moji,n];
 }
+
 //////////////  push関数  ////////////
 - (NSString *)push:(int) number
 {

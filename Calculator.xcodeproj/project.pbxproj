@@ -90,6 +90,7 @@
 		ECDF46DA162D36A300505AC2 = {
 			isa = PBXGroup;
 			children = (
+				ECDF4701162D36A400505AC2 /* MainStoryboard.storyboard */,
 				ECDF46EF162D36A300505AC2 /* Calculator */,
 				ECDF4713162D36A400505AC2 /* CalculatorTests */,
 				ECDF46E8162D36A300505AC2 /* Frameworks */,
@@ -122,7 +123,6 @@
 			children = (
 				ECDF46F8162D36A400505AC2 /* CalculatorAppDelegate.h */,
 				ECDF46F9162D36A400505AC2 /* CalculatorAppDelegate.m */,
-				ECDF4701162D36A400505AC2 /* MainStoryboard.storyboard */,
 				ECDF4704162D36A400505AC2 /* CalculatorViewController.h */,
 				ECDF4705162D36A400505AC2 /* CalculatorViewController.m */,
 				EC7B74E1169E8EF600054B59 /* CalculatorStateMachine.h */,
@@ -316,6 +316,7 @@
 				ECDF4702162D36A400505AC2 /* en */,
 			);
 			name = MainStoryboard.storyboard;
+			path = Calculator;
 			sourceTree = "<group>";
 		};
 		ECDF4716162D36A400505AC2 /* InfoPlist.strings */ = {
