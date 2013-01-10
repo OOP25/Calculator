@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CalculatorStateMachine.h"
 
 @interface CalculatorViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @property (weak, nonatomic) IBOutlet UILabel *labelc;
+
+@property(readonly) CalculatorStateMachine* statemachine;
 
 @property enum {nothing,sub,asta,slash,add} state;
 
