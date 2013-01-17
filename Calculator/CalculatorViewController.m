@@ -9,8 +9,14 @@
 #import "CalculatorViewController.h"
 
 
-@interface CalculatorViewController ()
-
+@interface CalculatorViewController () {
+    char moji;
+    double n;
+    double m;
+    int M; //　マイナス表示
+    int D; //  小数点の有無
+    int d;
+}
 @end
 
 @implementation CalculatorViewController
@@ -23,6 +29,13 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     statemachine = [[CalculatorStateMachine alloc] init];
+    moji=' ';
+    n=0;
+    m=0;
+    M=0; //　マイナス表示
+    D=0; //  小数点の有無
+    d=0;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -30,13 +43,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-char moji=' ';
-double n=0;
-double m=0;
-int M=0; //　マイナス表示
-int D=0; //  小数点の有無
-int d=0;
 
 ////////////////  AC  /////////////////
 - (IBAction)pushac:(id)sender {
