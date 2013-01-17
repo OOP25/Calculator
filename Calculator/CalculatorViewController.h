@@ -17,6 +17,7 @@
 
 @property enum {nothing,sub,asta,slash,add} state;
 
+
 - (IBAction)pushac:(id)sender;
 - (IBAction)pushplumai:(id)sender;
 - (IBAction)pushminus:(id)sender;

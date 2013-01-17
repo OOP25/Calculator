@@ -9,8 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface CalculatorStateMachine : NSObject
+@property double n;
+@property double m;
+@property enum {nothing,sub,asta,slash,add} state;
 
+-(void)pushac;
+-(NSString *)pushequal;
 -(NSString *)dot:(int) number;
--(NSString *)push:(int) number;
+-(NSString *)push:(int) number withD:(int)D;
+-(NSString *)calculate:(int)mark;
+-(void)switches:(int)C;
 
 @end
