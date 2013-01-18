@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface CalculatorStateMachine : NSObject
-@property double n;
-@property double m;
+@property double output;
+@property double suboutput;
 @property enum {nothing,sub,asta,slash,add} state;
 
 -(void)pushac;

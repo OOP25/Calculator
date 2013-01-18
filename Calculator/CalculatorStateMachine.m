@@ -11,117 +11,126 @@
 
 @implementation CalculatorStateMachine
 
-@synthesize n;
-@synthesize m;
+@synthesize output;
+@synthesize suboutput;
 @synthesize state;
 
 char moji=' ';
-double n=0;
-double m=0;
-int M=0; //　マイナス表示
-int D=0; //  小数点の有無
-int d=0;
+double output=0;
+double suboutput=0;
+int Minus=0; //　マイナス表示
+int Dot=0; //  小数点の有無
+int dotcount=0;
 
 ////////////////  AC  /////////////////
 - (void)pushac{
-    n=0;
-    m=0;
+    output=0;
+    suboutput=0;
     state=nothing;
-    D=0;
-    d=0;
-    M=0;
+    Dot=0;
+    dotcount=0;
+    Minus=0;
     moji=' ';
 }
 
 /////////////////  =  ///////////////
 - (NSString *)pushequal{
-    if(M==1){
-        n=-n;
+    if(Minus==1){
+        output=-output;
     }
     
     [self switches:state];
-    NSLog(@"ACpush:%f",m);
     
-    n=m;
-    return [NSString stringWithFormat:@"%g",n];
+    output=suboutput;
+    NSLog(@"=output:%g",output);
+    NSLog(@"=suboutput:%f",suboutput);
+    return [NSString stringWithFormat:@"%g",output];
 }
 
 /////////////  dot関数  /////////////
 -(NSString *)dot:(int)number{
     if (number==0) {
-        switch (d) {
+        switch (dotcount) {
             case 1:
-                return [NSString stringWithFormat:@"%c%.1f",moji,n];
+                return [NSString stringWithFormat:@"%c%.1f",moji,output];
                 break;
             case 2:
-                return [NSString stringWithFormat:@"%c%.2f",moji,n];
+                return [NSString stringWithFormat:@"%c%.2f",moji,output];
                 break;
             case 3:
-                return [NSString stringWithFormat:@"%c%.3f",moji,n];
+                return [NSString stringWithFormat:@"%c%.3f",moji,output];
                 break;
             case 4:
-                return [NSString stringWithFormat:@"%c%.4f",moji,n];
+                return [NSString stringWithFormat:@"%c%.4f",moji,output];
                 break;
             case 5:
-                return [NSString stringWithFormat:@"%c%.5f",moji,n];
+                return [NSString stringWithFormat:@"%c%.5f",moji,output];
                 break;
             case 6:
-                return [NSString stringWithFormat:@"%c%.6f",moji,n];
+                return [NSString stringWithFormat:@"%c%.6f",moji,output];
                 break;
         }
     }
-    return [NSString stringWithFormat:@"%c%g",moji,n];
+    return [NSString stringWithFormat:@"%c%g",moji,output];
 }
 
 //////////////  push関数  ////////////
 - (NSString *)push:(int)number withD:(int)D
 {
     if(D==1){
-        d=d+1;
-        n=n+number*pow(0.1,d);
+        dotcount=dotcount+1;
+        output=output+number*pow(0.1,dotcount);
         return [self dot:number];
     
     }
     else{
-        n=n*10+number;
-        return [NSString stringWithFormat:@"%c%g",moji,n];
+        output=output*10+number;
+        NSLog(@"pushoutput:%f",output);
+        NSLog(@"pushsuboutput:%f",suboutput);
+        return [NSString stringWithFormat:@"%c%g",moji,output];
     }
 }
 
 ////////////  calculate関数  ///////////
 -(NSString *)calculate:(int)mark{
-    if(M==1){
-        n=-n;
+    if(Minus==1){
+        output=-output;
     }
     if(state==nothing){
-        m=n;
+        suboutput=output;
     }
     else{
+        NSLog(@"calculateoutput:%f",output);
+        NSLog(@"calculatesuboutput:%f",suboutput);
+
         [self switches:state];
+        NSLog(@"calculatestate:%d",state);
     }
     state=mark;
-    n=0;
-    D=0;
-    d=0;
-    M=0;
+    output=0;
+    Dot=0;
+    dotcount=0;
+    Minus=0;
     moji=' ';
-    return [NSString stringWithFormat:@"%g",n];
+    NSLog(@"calculateoutput:%f",output);
+    NSLog(@"calculatesuboutput:%f",suboutput);
+    return [NSString stringWithFormat:@"%g",output];
 }
 
 /////////////  switches  /////////////
 -(void)switches:(int)C{
     switch(C){
         case add:
-            m=m+n;
+            suboutput=suboutput+output;
             break;
         case sub:
-            m=m-n;
+            suboutput=suboutput-output;
             break;
         case asta:
-            m=m*n;
+            suboutput=suboutput*output;
             break;
         case slash:
-            m=m/n;
+            suboutput=suboutput/output;
             break;
     }
 }

@@ -11,11 +11,11 @@
 
 @interface CalculatorViewController () {
     char moji;
-    double n;
-    double m;
-    int M; //　マイナス表示
-    int D; //  小数点の有無
-    int d;
+    double output;
+    double suboutput;
+    int Minus; //　マイナス表示
+    int Dot; //  小数点の有無
+    int dotcount;
 }
 @end
 
@@ -32,11 +32,11 @@
     
     statemachine = [[CalculatorStateMachine alloc] init];
     moji=' ';
-    n=0;
-    m=0;
-    M=0; //　マイナス表示
-    D=0; //  小数点の有無
-    d=0;
+    output=0;
+    suboutput=0;
+    Minus=0; //　マイナス表示
+    Dot=0; //  小数点の有無
+    dotcount=0;
 
 }
 
@@ -49,22 +49,22 @@
 ////////////////  AC  /////////////////
 - (IBAction)pushac:(id)sender {
     [statemachine pushac];
-    n=0;
-    m=0;
+    output=0;
+    suboutput=0;
     state=nothing;
-    D=0;
-    d=0;
-    M=0;
+    Dot=0;
+    dotcount=0;
+    Minus=0;
     moji=' ';
-    [[self label] setText:[NSString stringWithFormat:@"%g",n]];
+    [[self label] setText:[NSString stringWithFormat:@"%g",output]];
     [[self labelc] setText:@""];
 }
 
 ////////////////  +-  /////////////////
 - (IBAction)pushplumai:(id)sender {
-    M=1;
+    Minus=1;
     moji='-';
-    [[self label] setText:[NSString stringWithFormat:@"%c%g",moji,[statemachine n]]];
+    [[self label] setText:[NSString stringWithFormat:@"%c%g",moji,[statemachine output]]];
 }
 
 ////////////  calculate関数  ///////////
@@ -108,25 +108,25 @@
 /////////////////  -  ////////////////
 - (IBAction)pushminus:(id)sender {
     [[self label] setText:[statemachine calculate:sub]];
-    [[self labelc] setText:[NSString stringWithFormat:@"%g -",[statemachine m]]];
+    [[self labelc] setText:[NSString stringWithFormat:@"%g -",[statemachine suboutput]]];
 }
 
 ////////////////  *  /////////////////
 - (IBAction)pushasta:(id)sender {
     [[self label] setText:[statemachine calculate:asta]];
-    [[self labelc] setText:[NSString stringWithFormat:@"%g *",[statemachine m]]];
+    [[self labelc] setText:[NSString stringWithFormat:@"%g *",[statemachine suboutput]]];
 }
 
 /////////////////  /  ////////////////
 - (IBAction)pushslash:(id)sender{
     [[self label] setText:[statemachine calculate:slash]];
-    [[self labelc] setText:[NSString stringWithFormat:@"%g /",[statemachine m]]];
+    [[self labelc] setText:[NSString stringWithFormat:@"%g /",[statemachine suboutput]]];
 }
 
 /////////////////  +  ////////////////
 - (IBAction)pushplus:(id)sender{
     [[self label] setText:[statemachine calculate:add]];
-    [[self labelc] setText:[NSString stringWithFormat:@"%g +",[statemachine m ]]];
+    [[self labelc] setText:[NSString stringWithFormat:@"%g +",[statemachine suboutput ]]];
 }
 
 /////////////////  =  ///////////////
@@ -140,19 +140,19 @@
     
 //    n=m;
     [[self label] setText:[statemachine pushequal]];
-    m=0;
+    suboutput=0;
     [[self labelc] setText:@""];
     state=nothing;
-    D=0;
-    d=0;
-    M=0;
+    Dot=0;
+    dotcount=0;
+    Minus=0;
     moji=' ';
 }
 
 ////////////////  .  ////////////////
 - (IBAction)pushperiod:(id)sender{
-    D=1;
-        [[self label] setText:[NSString stringWithFormat:@"%c%g.",moji,[statemachine n]]];
+    Dot=1;
+        [[self label] setText:[NSString stringWithFormat:@"%c%g.",moji,[statemachine output]]];
 }
 
 /////////////  dot関数  /////////////
@@ -201,53 +201,53 @@
 
 ////////////////  7  //////////////
 - (IBAction)push7:(id)sender{
-    [[self label] setText:[statemachine push:7 withD:D]];
+    [[self label] setText:[statemachine push:7 withD:Dot]];
     
 }
 
 ////////////////  8  //////////////
 - (IBAction)push8:(id)sender{
-    [[self label] setText:[statemachine push:8 withD:D]];
+    [[self label] setText:[statemachine push:8 withD:Dot]];
 }
 
 ////////////////  9  /////////////
 - (IBAction)push9:(id)sender{
-    [[self label] setText:[statemachine push:9 withD:D]];
+    [[self label] setText:[statemachine push:9 withD:Dot]];
 }
 
 ////////////////  4  //////////////
 - (IBAction)push4:(id)sender{
-    [[self label] setText:[statemachine push:4 withD:D]];
+    [[self label] setText:[statemachine push:4 withD:Dot]];
 }
 
 /////////////////  5  /////////////
 - (IBAction)push5:(id)sender{
-    [[self label] setText:[statemachine push:5 withD:D]];
+    [[self label] setText:[statemachine push:5 withD:Dot]];
 }
 
 ////////////////  6  //////////////
 - (IBAction)push6:(id)sender{
-    [[self label] setText:[statemachine push:6 withD:D]];
+    [[self label] setText:[statemachine push:6 withD:Dot]];
 }
 
 ////////////////  1  //////////////
 - (IBAction)push1:(id)sender{
-    [[self label] setText:[statemachine push:1 withD:D]];
+    [[self label] setText:[statemachine push:1 withD:Dot]];
 }
 
 ////////////////  2  //////////////
 - (IBAction)push2:(id)sender{
-    [[self label] setText:[statemachine push:2 withD:D]];
+    [[self label] setText:[statemachine push:2 withD:Dot]];
 }
 
 /////////////////  3  /////////////
 - (IBAction)push3:(id)sender{
-    [[self label] setText:[statemachine push:3 withD:D]];
+    [[self label] setText:[statemachine push:3 withD:Dot]];
 }
 
 ////////////////  0  //////////////
 - (IBAction)push0:(id)sender{
-    [[self label] setText:[statemachine push:0 withD:D]];
+    [[self label] setText:[statemachine push:0 withD:Dot]];
 }
 
 
