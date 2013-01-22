@@ -62,9 +62,13 @@
 
 ////////////////  +-  /////////////////
 - (IBAction)pushplumai:(id)sender {
-    Minus=1;
-    moji='-';
+//    Minus=1;
+//    moji='-';
+    [statemachine pushplumai];
     [[self label] setText:[NSString stringWithFormat:@"%c%g",moji,[statemachine output]]];
+     
+     
+//    [[self label] setText:[NSString stringWithFormat:@"-%g",[statemachine output]]];
 }
 
 /////////////////  -  ////////////////

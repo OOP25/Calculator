@@ -14,6 +14,9 @@
 @synthesize output;
 @synthesize suboutput;
 @synthesize state;
+//@synthesize Dot;
+//@synthesize Minus;
+
 
 char moji=' ';
 double output=0;
@@ -21,6 +24,7 @@ double suboutput=0;
 int Minus=0; //　マイナス表示
 int Dot=0; //  小数点の有無
 int dotcount=0;
+
 
 ////////////////  AC  /////////////////
 - (void)pushac{
@@ -46,6 +50,14 @@ int dotcount=0;
     NSLog(@"=output:%g",output);
     NSLog(@"=suboutput:%f",suboutput);
     return [NSString stringWithFormat:@"%g",output];
+}
+
+////////////////  +-  /////////////////
+- (void)pushplumai{
+    Minus=1;
+    moji='-';
+    NSLog(@"plumaioutput:%g",output);
+    NSLog(@"plumaimoji:%c",moji);
 }
 
 ////////////////  .  ////////////////

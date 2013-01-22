@@ -12,9 +12,12 @@
 @property double output;
 @property double suboutput;
 @property enum {nothing,sub,asta,slash,add} state;
+//@property enum {on,off} Dot;
+//@property enum {On,Off} Minus;
 
 -(void)pushac;
 -(NSString *)pushequal;
+-(void)pushplumai;
 -(void)pushperiod;
 -(NSString *)dot:(int) number;
 -(NSString *)push:(int) number;
