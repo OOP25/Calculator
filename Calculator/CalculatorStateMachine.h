@@ -15,8 +15,9 @@
 
 -(void)pushac;
 -(NSString *)pushequal;
+-(void)pushperiod;
 -(NSString *)dot:(int) number;
--(NSString *)push:(int) number withD:(int)D;
+-(NSString *)push:(int) number;
 -(NSString *)calculate:(int)mark;
 -(void)switches:(int)C;
 

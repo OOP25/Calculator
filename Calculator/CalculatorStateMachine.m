@@ -42,9 +42,16 @@ int dotcount=0;
     [self switches:state];
     
     output=suboutput;
+    state=nothing;
     NSLog(@"=output:%g",output);
     NSLog(@"=suboutput:%f",suboutput);
     return [NSString stringWithFormat:@"%g",output];
+}
+
+////////////////  .  ////////////////
+- (void)pushperiod{
+    Dot=1;
+//    [[self label] setText:[NSString stringWithFormat:@"%c%g.",moji,[statemachine output]]];
 }
 
 /////////////  dot関数  /////////////
@@ -75,9 +82,13 @@ int dotcount=0;
 }
 
 //////////////  push関数  ////////////
-- (NSString *)push:(int)number withD:(int)D
+- (NSString *)push:(int)number
 {
-    if(D==1){
+    NSLog(@"pushDot:%d",Dot);
+    NSLog(@"pushdcount:%d",dotcount);
+    NSLog(@"pushoutput:%f",output);
+    NSLog(@"pushsuboutput:%f",suboutput);
+    if(Dot==1){
         dotcount=dotcount+1;
         output=output+number*pow(0.1,dotcount);
         return [self dot:number];
@@ -93,6 +104,7 @@ int dotcount=0;
 
 ////////////  calculate関数  ///////////
 -(NSString *)calculate:(int)mark{
+//    state=mark;
     if(Minus==1){
         output=-output;
     }
@@ -102,7 +114,6 @@ int dotcount=0;
     else{
         NSLog(@"calculateoutput:%f",output);
         NSLog(@"calculatesuboutput:%f",suboutput);
-
         [self switches:state];
         NSLog(@"calculatestate:%d",state);
     }
@@ -114,6 +125,8 @@ int dotcount=0;
     moji=' ';
     NSLog(@"calculateoutput:%f",output);
     NSLog(@"calculatesuboutput:%f",suboutput);
+    NSLog(@"calculateDot:%d",Dot);
+    NSLog(@"calculatedotcount:%d",dotcount);
     return [NSString stringWithFormat:@"%g",output];
 }
 
