@@ -124,8 +124,8 @@
 				ECDF46F8162D36A400505AC2 /* CalculatorAppDelegate.h */,
 				ECDF46F9162D36A400505AC2 /* CalculatorAppDelegate.m */,
 				ECDF4704162D36A400505AC2 /* CalculatorViewController.h */,
-				ECDF4705162D36A400505AC2 /* CalculatorViewController.m */,
 				EC7B74E1169E8EF600054B59 /* CalculatorStateMachine.h */,
+				ECDF4705162D36A400505AC2 /* CalculatorViewController.m */,
 				EC7B74E2169E8EF600054B59 /* CalculatorStateMachine.m */,
 				ECDF46F0162D36A300505AC2 /* Supporting Files */,
 			);

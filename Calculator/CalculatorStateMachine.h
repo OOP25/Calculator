@@ -12,8 +12,7 @@
 @property double output;
 @property double suboutput;
 @property enum {nothing,sub,asta,slash,add} state;
-//@property enum {on,off} Dot;
-//@property enum {On,Off} Minus;
+@property char moji;
 
 -(void)pushac;
 -(NSString *)pushequal;

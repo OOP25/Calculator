@@ -10,12 +10,6 @@
 
 
 @interface CalculatorViewController () {
-    char moji;
-    double output;
-    double suboutput;
-    int Minus; //　マイナス表示
-    int Dot; //  小数点の有無
-    int dotcount;
 }
 @end
 
@@ -31,13 +25,6 @@
     //xcodeを開いたとき必ず参照する
     
     statemachine = [[CalculatorStateMachine alloc] init];
-    moji=' ';
-    output=0;
-    suboutput=0;
-    Minus=0; //　マイナス表示
-    Dot=0; //  小数点の有無
-    dotcount=0;
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,26 +36,14 @@
 ////////////////  AC  /////////////////
 - (IBAction)pushac:(id)sender {
     [statemachine pushac];
-    output=0;
-    suboutput=0;
-    state=nothing;
-    Dot=0;
-    dotcount=0;
-    Minus=0;
-    moji=' ';
-    [[self label] setText:[NSString stringWithFormat:@"%g",output]];
+    [[self label] setText:[NSString stringWithFormat:@"%g",[statemachine output]]];
     [[self labelc] setText:@""];
 }
 
 ////////////////  +-  /////////////////
 - (IBAction)pushplumai:(id)sender {
-//    Minus=1;
-//    moji='-';
     [statemachine pushplumai];
-    [[self label] setText:[NSString stringWithFormat:@"%c%g",moji,[statemachine output]]];
-     
-     
-//    [[self label] setText:[NSString stringWithFormat:@"-%g",[statemachine output]]];
+    [[self label] setText:[NSString stringWithFormat:@"%c%g",[statemachine moji],[statemachine output]]];
 }
 
 /////////////////  -  ////////////////
@@ -80,6 +55,7 @@
 ////////////////  *  /////////////////
 - (IBAction)pushasta:(id)sender {
     [[self label] setText:[statemachine calculate:asta]];
+//    [statemachine calculate:asta];
     [[self labelc] setText:[NSString stringWithFormat:@"%g *",[statemachine suboutput]]];
 }
 
@@ -98,20 +74,13 @@
 /////////////////  =  ///////////////
 - (IBAction)pushequal:(id)sender{
     [[self label] setText:[statemachine pushequal]];
-    suboutput=0;
     [[self labelc] setText:@""];
-    //state=nothing;
-    Dot=0;
-    dotcount=0;
-    Minus=0;
-    moji=' ';
 }
 
 ////////////////  .  ////////////////
 - (IBAction)pushperiod:(id)sender{
-//    Dot=1;
     [statemachine pushperiod];
-        [[self label] setText:[NSString stringWithFormat:@"%c%g.",moji,[statemachine output]]];
+    [[self label] setText:[NSString stringWithFormat:@"%c%g.",[statemachine moji],[statemachine output]]];
 }
 
 ////////////////  7  //////////////
