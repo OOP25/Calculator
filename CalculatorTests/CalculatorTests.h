@@ -7,7 +7,12 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "CalculatorStateMachine.h"
 
-@interface CalculatorTests : SenTestCase
+
+@interface CalculatorTests : SenTestCase{
+}
+
+@property(readonly) CalculatorStateMachine* statemachine;
 
 @end

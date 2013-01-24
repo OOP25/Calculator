@@ -15,16 +15,29 @@
 @synthesize suboutput;
 @synthesize state;
 @synthesize moji;
-
-char moji=' ';
-double output=0;
-double suboutput=0;
-int Minus=0; //　マイナス表示
-int Dot=0; //  小数点の有無
-int dotcount=0;
+@synthesize Minus;
+@synthesize Dot;
+@synthesize dotcount;
 
 
-////////////////  AC  /////////////////
+
+
+- (id)init {
+    self = [super init];
+    if(self != nil) {
+        output = 0;
+        suboutput = 0;
+        state = nothing;
+        Minus = 0;
+        Dot = 0;
+        dotcount = 0;
+        moji = ' ';
+    }
+    return self;
+}
+
+
+////////////////  pushac関数  /////////////////
 - (void)pushac{
     output=0;
     suboutput=0;
@@ -35,7 +48,7 @@ int dotcount=0;
     moji=' ';
 }
 
-/////////////////  =  ///////////////
+/////////////////  pushepual関数  ///////////////
 - (NSString *)pushequal{
     if(Minus==1){
         output=-output;
@@ -48,21 +61,16 @@ int dotcount=0;
     state=nothing;
     moji=' ';
     Minus=0;
-    NSLog(@"=output:%g",output);
-    NSLog(@"=suboutput:%f",suboutput);
-    NSLog(@"=moji:%c",moji);
     return [NSString stringWithFormat:@"%g",output];
 }
 
-////////////////  +-  /////////////////
+////////////////  pushplumi関数  /////////////////
 - (void)pushplumai{
     Minus=1;
     moji='-';
-    NSLog(@"plumaioutput:%g",output);
-    NSLog(@"plumaimoji:%c",moji);
 }
 
-////////////////  .  ////////////////
+////////////////  pushperiod関数  ////////////////
 - (void)pushperiod{
     Dot=1;
 }
@@ -97,10 +105,6 @@ int dotcount=0;
 //////////////  push関数  ////////////
 - (NSString *)push:(int)number
 {
-    NSLog(@"pushDot:%d",Dot);
-    NSLog(@"pushdcount:%d",dotcount);
-    NSLog(@"pushoutput:%f",output);
-    NSLog(@"pushsuboutput:%f",suboutput);
     if(Dot==1){
         dotcount=dotcount+1;
         output=output+number*pow(0.1,dotcount);
@@ -109,8 +113,6 @@ int dotcount=0;
     }
     else{
         output=output*10+number;
-        NSLog(@"pushoutput:%f",output);
-        NSLog(@"pushsuboutput:%f",suboutput);
         return [NSString stringWithFormat:@"%c%g",moji,output];
     }
 }
@@ -136,9 +138,9 @@ int dotcount=0;
     return [NSString stringWithFormat:@"%g",output];
 }
 
-/////////////  switches  /////////////
--(void)switches:(int)C{
-    switch(C){
+/////////////  switches関数  /////////////
+-(void)switches:(int)operationState{
+    switch(operationState){
         case add:
             suboutput=suboutput+output;
             break;

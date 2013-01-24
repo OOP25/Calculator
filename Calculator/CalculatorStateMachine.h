@@ -12,7 +12,12 @@
 @property double output;
 @property double suboutput;
 @property enum {nothing,sub,asta,slash,add} state;
+@property int Minus; //　マイナス表示
+@property int Dot;
+@property int dotcount;
 @property char moji;
+
+
 
 -(void)pushac;
 -(NSString *)pushequal;
@@ -21,6 +26,6 @@
 -(NSString *)dot:(int) number;
 -(NSString *)push:(int) number;
 -(NSString *)calculate:(int)mark;
--(void)switches:(int)C;
+-(void)switches:(int)operationState;
 
 @end
